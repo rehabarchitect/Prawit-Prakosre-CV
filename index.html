@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Prawit Prakosre, PT, MSc | Rehab Architect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #E2E8F0;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* กระดาษ A4 สไตล์ Infographic */
+        .infographic-cv {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        /* แถบ gradient บน */
+        .hero-bar {
+            background: linear-gradient(135deg, #1A365D 0%, #0D9488 100%);
+            padding: 24px 40px 20px 40px;
+            color: white;
+        }
+
+        .name {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            opacity: 0.9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.12);
+            padding: 12px 16px;
+            border-radius: 48px;
+            margin-top: 8px;
+        }
+
+        .contact-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* เนื้อหาหลัก */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        /* LEFT PANEL */
+        .left-panel {
+            background: #F8FAFE;
+            padding: 32px 24px;
+            border-right: 1px solid #E2EDF2;
+        }
+
+        .right-panel {
+            padding: 32px 32px;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0D9488;
+            margin-bottom: 18px;
+            border-left: 4px solid #EA8C2B;
+            padding-left: 12px;
+        }
+
+        /* badges พิเศษ */
+        .robot-badge {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 16px 0;
+        }
+        .badge {
+            background: white;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1A365D;
+            border: 1px solid #CBD5E1;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        .badge-innov {
+            background: #EA8C2B10;
+            border-left: 3px solid #EA8C2B;
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin: 12px 0;
+            font-weight: 500;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            text-align: center;
+            background: white;
+            padding: 16px 8px;
+            border-radius: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #E9EEF5;
+        }
+        .stat-number {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #1A365D;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4A5B6E;
+            text-transform: uppercase;
+        }
+
+        /* timeline ประสบการณ์ */
+        .timeline-item {
+            margin-bottom: 24px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #CBD5E1;
+        }
+        .timeline-year {
+            font-weight: 800;
+            color: #0D9488;
+            font-size: 0.85rem;
+        }
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 4px 0 6px;
+        }
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: #2D3A4B;
+            line-height: 1.4;
+        }
+
+        .list-innov {
+            list-style: none;
+            padding: 0;
+        }
+        .list-innov li {
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .emoj {
+            font-size: 1.2rem;
+            min-width: 28px;
+        }
+
+        .qr-area {
+            background: #F1F5F9;
+            border-radius: 24px;
+            padding: 16px;
+            text-align: center;
+            margin-top: 24px;
+        }
+        .qr-small {
+            font-weight: 600;
+            font-size: 0.7rem;
+            word-break: break-all;
+            background: white;
+            padding: 10px;
+            border-radius: 16px;
+            font-family: monospace;
+        }
+
+        hr {
+            margin: 16px 0;
+            border: none;
+            height: 1px;
+            background: #E2EDF2;
+        }
+
+        @media (max-width: 780px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .left-panel {
+                border-right: 0;
+                border-bottom: 1px solid #E2EDF2;
+            }
+            .name {
+                font-size: 1.8rem;
+            }
+        }
+        .footer-note {
+            background: #F1F5F9;
+            text-align: center;
+            padding: 14px;
+            font-size: 0.7rem;
+            color: #2c5a6e;
+            border-top: 1px solid #E0EAEF;
+        }
+        a {
+            color: #1A365D;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="infographic-cv">
+
+    <!-- HEADER gradient -->
+    <div class="hero-bar">
+        <div class="name">PRAWIT PRAKOSRE, PT, MSc</div>
+        <div class="title">Rehab Architect · Neuro PT · Clinical Innovator</div>
+        <div class="contact-row">
+            <span>📍 Bangkok, Thailand</span>
+            <span>📞 (+66) 880-806-836</span>
+            <span>✉️ prawitwit@gmail.com</span>
+            <span>🔗 linkedin.com/in/prawit-prakosre</span>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <!-- LEFT COLUMN : ข้อมูลแข็ง + innovation -->
+        <div class="left-panel">
+            <div class="section">
+                <div class="section-title">Robotics Cert.</div>
+                <div class="robot-badge">
+                    <span class="badge">🤖 EksoNR</span>
+                    <span class="badge">⚙️ HIWIN</span>
+                    <span class="badge">🦿 R-GAIT</span>
+                </div>
+                <div style="margin-top: 12px;"><span class="badge">🧠 Licensed PT (Thai Council)</span></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Innovations & tools</div>
+                <ul class="list-innov">
+                    <li><span class="emoj">🩺</span> <strong>DKES</strong> — elastic sling for knee hyperextension + foot drop (unique worldwide)</li>
+                    <li><span class="emoj">📊</span> <strong>RAGT Scoring Tool V1/V2</strong> — clinical readiness for robotic gait</li>
+                    <li><span class="emoj">💨</span> <strong>Breathe Belt</strong> — TED Fund 100k THB, respiratory device</li>
+                    <li><span class="emoj">📐</span> <strong>RAGT Decision Flowchart</strong> (HIWIN/Ekso/R-GAIT)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Key metrics</div>
+                <div class="stat-grid">
+                    <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Years clinical</div></div>
+                    <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Publications</div></div>
+                    <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Robot platforms</div></div>
+                    <div class="stat-card"><div class="stat-number">2</div><div class="stat-label">Digital RAGT tools</div></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Education</div>
+                <div><strong>🎓 MSc Physiotherapy (Research)</strong><br>Khon Kaen University · Thesis: Slow Loaded Breathing & HRV</div>
+                <hr>
+                <div><strong>🎓 BSc Physiotherapy</strong><br>First Class Honours · Khon Kaen University</div>
+            </div>
+            <div class="qr-area">
+                <div style="font-weight:600; margin-bottom:8px;">🔍 RAGT Readiness Tool</div>
+                <div class="qr-small">rehabarchitect.github.io/RAGT-Scoring-Tool-V2/</div>
+                <div style="font-size:0.7rem; margin-top:8px;">⬅️ สแกนด้วยมือถือ / คลิกที่ link</div>
+                <!-- ผมจำลอง QR text ไว้จริงๆ สามารถ generate QR จาก URL นี้ได้ -->
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL : ประสบการณ์, research highlights -->
+        <div class="right-panel">
+            <div class="section">
+                <div class="section-title">Work experience</div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024 – Present</div>
+                    <div class="timeline-title">Thai Red Cross Rehabilitation Center · Bangkok</div>
+                    <div class="timeline-desc">Robot-assisted gait training (EksoNR, HIWIN, R-GAIT) for stroke & SCI. Developed clinical decision flowchart. Abstract submitted to SRC 2026.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2021 – 2024</div>
+                    <div class="timeline-title">Suranaree University of Technology Hospital (SUTH)</div>
+                    <div class="timeline-desc">Co-developed Breathe Belt (TED Fund 100k). Guest Lecturer at Nakhon Ratchasima College. R2R Facilitator.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2019 – 2020</div>
+                    <div class="timeline-title">Bangkok Ratchasima Hospital</div>
+                    <div class="timeline-desc">Physiotherapist – acute & rehab care</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2015 – 2018</div>
+                    <div class="timeline-title">Bangkok Rehabilitation Center</div>
+                    <div class="timeline-desc">Cardiopulmonary rehab, patient engagement strategies</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Research & publications</div>
+                <ul class="list-innov" style="margin-bottom:0;">
+                    <li><span class="emoj">📄</span> AASD 2025 – Slow Loaded Breathing on BP in HT & T2DM</li>
+                    <li><span class="emoj">📄</span> Christian Univ Journal 2023 – 6MWT vs 5MWT agreement</li>
+                    <li><span class="emoj">📄</span> 7th Asia Pacific ICU Conf 2023 – New breathing device (intubated patient)</li>
+                    <li><span class="emoj">📄</span> Burapha Univ 2021 – Static exercise & CV responses in older adults</li>
+                </ul>
+                <div class="badge-innov" style="margin-top: 12px;">🎯 SRC 2026 Abstract (ID: 0007) – Poster presentation</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">DKES · Unique technique</div>
+                <div class="timeline-desc" style="margin-bottom: 6px;"><strong>Dynamic Knee Control Elastic Sling (2-joint bandage):</strong> ankle neutral bias, tibia allowed to move, knee slight flexion ⇒ improves stance stability in foot drop + knee hyperextension.</div>
+                <div class="robot-badge" style="margin-top: 6px;">
+                    <span class="badge">🔬 No identical technique in literature</span>
+                    <span class="badge">🧪 Clinical innovation</span>
+                </div>
+            </div>
+            <div class="footer-note" style="background: none; padding: 12px 0 0 0; text-align: left; border-top: none;">
+                🌐 <strong>Personal brand:</strong> @rehabarchitect.th · #Neurorehabilitation #Footdrop #kneehyperextension
+            </div>
+        </div>
+    </div>
+    <div class="footer-note">
+        📌 All patient education content published with consent · Turning science into real walking recovery
+    </div>
+</div>
+</body>
+</html>
