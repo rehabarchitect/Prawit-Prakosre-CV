@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prawit Prakosre | Clinical Rehabilitation & Medical Technology Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0f1117;
+    --bone: #f4f1eb;
+    --warm: #e8e2d5;
+    --accent: #c1440e;
+    --accent2: #1a5276;
+    --muted: #6b6560;
+    --rule: #d0c9bc;
+    --tag-bg: #e8e2d5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .print-btn:hover { opacity: 1; }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .name-block h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  .name-block h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .name-block .credentials {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    margin-top: 6px;
+  }
+
+  .contact-block {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 2;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-block a { color: var(--accent2); text-decoration: none; }
+
+  .title-bar {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .title-bar .role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--accent2);
+    letter-spacing: 0.01em;
+  }
+
+  .title-bar .cert-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--bone);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 3px 9px;
+    text-transform: uppercase;
+  }
+
+  .badge.outline {
+    background: transparent;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+
+  /* ── SECTION ── */
+  section {
+    margin-bottom: 44px;
+  }
+
+  .sec-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── SUMMARY ── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .summary-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    background: var(--warm);
+    border-left: 3px solid var(--accent2);
+  }
+
+  .summary-item .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .summary-item p {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-entry {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .exp-entry:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .exp-meta {
+    text-align: right;
+  }
+
+  .exp-meta .period {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .exp-meta .type-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 2px 6px;
+  }
+
+  .exp-body .org {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .exp-body .role-title {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .exp-body ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .exp-body ul li {
+    padding: 4px 0 4px 16px;
+    position: relative;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #2a2520;
+  }
+
+  .exp-body ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+    top: 5px;
+  }
+
+  /* ── CLINICAL EDUCATION & TECH ── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .tech-card {
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+    background: #fff;
+  }
+
+  .tech-card .card-icon {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .tech-card .card-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 13.5px;
+    margin-bottom: 4px;
+  }
+
+  .tech-card .card-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .tech-card .card-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    background: var(--tag-bg);
+    padding: 2px 8px;
+    color: var(--accent2);
+  }
+
+  /* ── INNOVATION ── */
+  .innovation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .innov-item {
+    display: flex;
+    gap: 16px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--accent);
+    background: var(--warm);
+  }
+
+  .innov-item .innov-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .innov-item .innov-text .innov-name {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .innov-item .innov-text .innov-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .innov-item .innov-text a {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  /* ── RESEARCH ── */
+  .research-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .research-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+
+  .research-item:last-child { border-bottom: none; }
+
+  .research-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 3px;
+    min-width: 28px;
+  }
+
+  .research-item .r-title {
+    font-size: 13.5px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin-bottom: 3px;
+  }
+
+  .research-item .r-venue {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  .skill-pill {
+    padding: 8px 12px;
+    border: 1px solid var(--rule);
+    font-size: 12.5px;
+    line-height: 1.3;
+    background: #fff;
+  }
+
+  .skill-pill span {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .edu-card {
+    padding: 16px;
+    border: 1px solid var(--rule);
+  }
+
+  .edu-card .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .edu-card .edu-inst {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .edu-card .edu-detail {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-bottom: 44px;
+    overflow: hidden;
+  }
+
+  .stat {
+    flex: 1;
+    text-align: center;
+    padding: 18px 10px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .stat .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  footer .brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  footer .hashtags {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .print-btn { display: none; }
+    body { background: #fff; font-size: 12px; }
+    .page { padding: 20px 30px; }
+    section { margin-bottom: 28px; }
+    header { margin-bottom: 24px; }
+    .name-block h1 { font-size: 34px; }
+    .stats-row { margin-bottom: 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 32px 20px 80px; }
+    .header-top { flex-direction: column; }
+    .contact-block { text-align: left; }
+    .summary-grid, .tech-grid, .skills-grid, .edu-grid { grid-template-columns: 1fr; }
+    .exp-entry { grid-template-columns: 1fr; }
+    .exp-meta { text-align: left; }
+    .stats-row { flex-wrap: wrap; }
+    .stat { min-width: 50%; }
+    .name-block h1 { font-size: 34px; }
+  }
+
+  /* Entry animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section, header, .stats-row {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  section:nth-child(2) { animation-delay: 0.05s; }
+  section:nth-child(3) { animation-delay: 0.10s; }
+  section:nth-child(4) { animation-delay: 0.15s; }
+  section:nth-child(5) { animation-delay: 0.20s; }
+  section:nth-child(6) { animation-delay: 0.25s; }
+</style>
+
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">⬇ PRINT / PDF</button>
+
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+
+  <header>
+    <div class="header-top">
+      <div class="name-block">
+        <h1>Prawit <em>Prakosre</em></h1>
+        <div class="credentials">M.Sc. PT · License No. ก.9573 · Bangkok, Thailand</div>
+      </div>
+      <div class="contact-block">
+        <div>prawitwit@gmail.com</div>
+        <div>(+66) 880-806-836</div>
+        <div><a href="https://linkedin.com/in/prawit-prakosre">linkedin.com/in/prawit-prakosre</a></div>
+        <div><a href="https://rehabarchitect.github.io">rehabarchitect.github.io</a></div>
+      </div>
+    </div>
+    <div class="title-bar">
+      <div class="role">Clinical Rehabilitation &amp; Medical Technology Specialist</div>
+      <div class="cert-badges">
+        <span class="badge">EksoNR Certified</span>
+        <span class="badge outline">HIWIN Certified</span>
+        <span class="badge outline">R-GAIT Clinician</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ STATS ══ -->
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years Clinical</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Publications</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Robotic Platforms</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Interns Trained</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100k</div>
+      <div class="stat-label">THB Grant Won</div>
+    </div>
+  </div>
+
+  <!-- ══ PROFESSIONAL SUMMARY ══ -->
+
+  <section>
+    <div class="sec-label">Professional Summary</div>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="dot"></div>
+        <p>10+ years in neurological, cardiopulmonary, and critical care rehabilitation across tertiary and academic hospital settings</p>
+      </div>
+      <div class="summary-item">
+        <div class="dot"></div>
+        <p>Dual-certified in EksoNR and HIWIN robotic gait systems; advanced clinical user of R-GAIT — one of very few clinicians in Thailand with all three platforms</p>
+      </div>
+      <div class="summary-item">
+        <div class="dot"></div>
+        <p>Experienced clinical educator and facilitator: bedside teaching, interdisciplinary team training, intern supervision, and part-time lecturer at Nakhon Ratchasima College</p>
+      </div>
+      <div class="summary-item">
+        <div class="dot"></div>
+        <p>Developer of clinical decision support tools, including the RG-RST web-based RAGT readiness scoring system, adopted by 5 PTs and 20+ interns</p>
+      </div>
+      <div class="summary-item">
+        <div class="dot"></div>
+        <p>Research-active clinician: 4 publications/presentations spanning respiratory intervention, ICU rehabilitation, and cardiac rehabilitation outcomes</p>
+      </div>
+      <div class="summary-item">
+        <div class="dot"></div>
+        <p>Passionate about clinical implementation, medical technology education, and building evidence-based rehabilitation frameworks for real-world adoption</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CLINICAL EDUCATION & TECHNOLOGY ══ -->
+
+  <section>
+    <div class="sec-label">Clinical Education &amp; Technology Experience</div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="card-icon">🤖</div>
+        <div class="card-title">Robotic Gait Training Implementation</div>
+        <div class="card-desc">Certified operator of EksoNR and HIWIN; regular clinical user of R-GAIT. Delivers RAGT for complex stroke, SCI, and TBI cases at Thai Red Cross Rehabilitation Center.</div>
+        <div class="card-tag">EksoNR · HIWIN · R-GAIT</div>
+      </div>
+      <div class="tech-card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Clinical Decision Support Development</div>
+        <div class="card-desc">Creator of the RG-RST (RAGT Readiness Scoring Tool) — an 8-domain web-based CDSS. Adopted institutionally. Designed for future ML integration.</div>
+        <div class="card-tag">GitHub · Web App · CDSS</div>
+      </div>
+      <div class="tech-card">
+        <div class="card-icon">🎓</div>
+        <div class="card-title">Clinical Education &amp; Supervision</div>
+        <div class="card-desc">Supervises physical therapy interns and students in robotic rehabilitation. Part-time lecturer at Nakhon Ratchasima College. R2R Facilitator at SUTH.</div>
+        <div class="card-tag">Lecturing · Mentoring · R2R</div>
+      </div>
+      <div class="tech-card">
+        <div class="card-icon">🫁</div>
+        <div class="card-title">ICU &amp; Cardiopulmonary Rehabilitation</div>
+        <div class="card-desc">Extensive experience in ventilator-related rehabilitation, early mobilization, and exercise safety monitoring. ICU rehab research proposal developed.</div>
+        <div class="card-tag">ICU · Ventilator Rehab · ICUAW</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROFESSIONAL EXPERIENCE ══ -->
+
+  <section>
+    <div class="sec-label">Professional Experience</div>
+
+```
+<div class="exp-entry">
+  <div class="exp-meta">
+    <span class="period">2024 — Present</span>
+    <div class="type-tag">Neurorehab</div>
+  </div>
+  <div class="exp-body">
+    <div class="org">Thai Red Cross Rehabilitation Center</div>
+    <div class="role-title">Physiotherapist — Neurological Rehabilitation, Bangkok</div>
+    <ul>
+      <li>Delivers robotic-assisted gait training programs (EksoNR, HIWIN, R-GAIT) for complex stroke, SCI, and TBI cases</li>
+      <li>Implements evidence-based RAGT patient selection using proprietary RG-RST clinical decision support tool</li>
+      <li>Conducts clinical education and bedside teaching for PT students, interns, and interdisciplinary rehabilitation teams</li>
+      <li>Developed RAGT Clinical Decision Flowchart — now integrated into departmental workflow and adopted by 5 clinical staff</li>
+      <li>Applies original DKES (Dynamic Knee Control Elastic Sling) technique for concurrent knee hyperextension and foot drop management</li>
+      <li>Participates in interdisciplinary rehabilitation planning and patient mobility optimization programs</li>
+    </ul>
+  </div>
+</div>
+
+<div class="exp-entry">
+  <div class="exp-meta">
+    <span class="period">2021 — 2024</span>
+    <div class="type-tag">Cardiopulmonary</div>
+  </div>
+  <div class="exp-body">
+    <div class="org">Suranaree University of Technology Hospital</div>
+    <div class="role-title">Physiotherapist — Neuro &amp; Cardiopulmonary Rehabilitation · R2R Facilitator</div>
+    <ul>
+      <li>Co-developed the Breathe Belt, a respiratory rehabilitation device for intubated patients, awarded 100,000 THB innovation grant (TED Fund) in collaboration with SUT Engineering</li>
+      <li>Served as Research-to-Reality (R2R) Facilitator — bridging clinical evidence to institutional practice change</li>
+      <li>Designed and delivered cardiopulmonary rehabilitation programs with outcome monitoring and exercise safety protocols</li>
+      <li>Presented device innovation at 7th Annual Asia Pacific Conference on Early Mobilization and Rehabilitation in ICU (2023)</li>
+      <li>Guest Lecturer at Nakhon Ratchasima College — clinical education in neurological rehabilitation</li>
+    </ul>
+  </div>
+</div>
+
+<div class="exp-entry">
+  <div class="exp-meta">
+    <span class="period">2018 — 2020</span>
+    <div class="type-tag">Private Sector</div>
+  </div>
+  <div class="exp-body">
+    <div class="org">Samitivej Sukhumvit &amp; Bangkok Ratchasima Hospital</div>
+    <div class="role-title">Physiotherapist — Neurorehabilitation (BDMS Network)</div>
+    <ul>
+      <li>Delivered premium neurorehabilitation services in high-acuity private hospital settings</li>
+      <li>Developed insight into hospital procurement cycles, specialist referral networks, and private-sector service standards</li>
+      <li>Maintained patient-centered care with measurable functional outcomes across diverse neurological presentations</li>
+    </ul>
+  </div>
+</div>
+
+<div class="exp-entry">
+  <div class="exp-meta">
+    <span class="period">2015 — 2018</span>
+    <div class="type-tag">Cardiopulmonary</div>
+  </div>
+  <div class="exp-body">
+    <div class="org">Bangkok Rehabilitation Center</div>
+    <div class="role-title">Physiotherapist — Cardiopulmonary Rehabilitation</div>
+    <ul>
+      <li>Designed individualized cardiac and pulmonary rehabilitation programs with structured exercise progression</li>
+      <li>Conducted exercise safety monitoring, outcome measurement, and interdisciplinary team communication</li>
+      <li>Built foundational expertise in exercise physiology and cardiorespiratory rehabilitation management</li>
+    </ul>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- ══ CLINICAL INNOVATION ══ -->
+
+  <section>
+    <div class="sec-label">Clinical Innovation &amp; Technology Projects</div>
+    <div class="innovation-list">
+      <div class="innov-item">
+        <div class="innov-icon">📊</div>
+        <div class="innov-text">
+          <div class="innov-name">RG-RST — RAGT Readiness Scoring Tool (V2)</div>
+          <div class="innov-desc">Web-based 8-domain clinical decision support system for EksoNR, HIWIN, and R-GAIT patient selection. Adopted by 5 PTs and 20+ interns at Thai Red Cross. Designed for future ML integration and multi-center use.</div>
+          <a href="https://rehabarchitect.github.io/RAGT-Scoring-Tool-V2/">→ rehabarchitect.github.io/RAGT-Scoring-Tool-V2</a>
+        </div>
+      </div>
+      <div class="innov-item">
+        <div class="innov-icon">🦿</div>
+        <div class="innov-text">
+          <div class="innov-name">DKES — Dynamic Knee Control Elastic Sling</div>
+          <div class="innov-desc">Original 2-joint elastic bandaging technique for concurrent knee hyperextension and foot drop in neurological patients. Biomechanical rationale: ankle neutral bias, tibia mobility, slight knee flexion → improved stance stability. No identical technique identified in current literature.</div>
+        </div>
+      </div>
+      <div class="innov-item">
+        <div class="innov-icon">💨</div>
+        <div class="innov-text">
+          <div class="innov-name">Breathe Belt — Respiratory Rehabilitation Device</div>
+          <div class="innov-desc">Co-developed with SUT School of Engineering. Targeted at intubated patients for airway clearance and respiratory muscle training. Pilot study (n=20, post-abdominal surgery) presented at HACC 2022. Funded by TED Fund (Youth Startup Program) — 100,000 THB grant.</div>
+        </div>
+      </div>
+      <div class="innov-item">
+        <div class="innov-icon">⚡</div>
+        <div class="innov-text">
+          <div class="innov-name">Breaking the Wall of Walking — Falling Walls Lab Thailand Finalist</div>
+          <div class="innov-desc">Proposed a scalable home-based rehabilitation model for Thailand's aging society, presented at Falling Walls Lab Thailand (lab23TH). National access framework for post-stroke community rehabilitation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RESEARCH ══ -->
+
+  <section>
+    <div class="sec-label">Research &amp; Scientific Presentations</div>
+    <div class="research-list">
+      <div class="research-item">
+        <div class="research-num">01</div>
+        <div>
+          <div class="r-title">Effect of Slow Loaded Breathing on Blood Pressure in Hypertension and Type 2 Diabetes Mellitus: A Pilot Study</div>
+          <div class="r-venue">Asian Association for the Study of Diabetes (AASD) — 2025 · First Author</div>
+        </div>
+      </div>
+      <div class="research-item">
+        <div class="research-num">02</div>
+        <div>
+          <div class="r-title">Agreement between 6-Minute Walk Test and 5-Meter Walk Test in Cardiac Surgery Patients</div>
+          <div class="r-venue">Christian University Journal — 2023 · Poster Abstract submitted SRC 2026 (ID: 0007)</div>
+        </div>
+      </div>
+      <div class="research-item">
+        <div class="research-num">03</div>
+        <div>
+          <div class="r-title">The New Breathing Exercise Device for Intubated Patients: A Case Report</div>
+          <div class="r-venue">7th Asia Pacific Conference on Early Mobilization &amp; Rehabilitation in ICU — 2023</div>
+        </div>
+      </div>
+      <div class="research-item">
+        <div class="research-num">04</div>
+        <div>
+          <div class="r-title">Cardiovascular Responses to Static Exercise in Older Adults</div>
+          <div class="r-venue">Burapha University — 2021</div>
+        </div>
+      </div>
+      <div class="research-item">
+        <div class="research-num">▸</div>
+        <div>
+          <div class="r-title">Research Proposal Experience: ICU-Acquired Weakness (ICUAW), NMES, and Early Mobilization in Mechanically Ventilated Patients</div>
+          <div class="r-venue">Proposal development — Thai Red Cross / academic collaboration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SKILLS ══ -->
+
+  <section>
+    <div class="sec-label">Clinical &amp; Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-pill">Robotic Gait Training (RAGT)<span>EksoNR · HIWIN · R-GAIT</span></div>
+      <div class="skill-pill">ICU Rehabilitation<span>Early Mobilization · ICUAW</span></div>
+      <div class="skill-pill">Ventilator-related Rehabilitation<span>Airway clearance · Weaning support</span></div>
+      <div class="skill-pill">Clinical Education &amp; Supervision<span>Interns · Students · Workshops</span></div>
+      <div class="skill-pill">Clinical Decision Support<span>Web tools · Outcome frameworks</span></div>
+      <div class="skill-pill">Cardiopulmonary Rehabilitation<span>Cardiac · Pulmonary · Exercise safety</span></div>
+      <div class="skill-pill">Evidence-based Rehabilitation<span>CPG development · Implementation</span></div>
+      <div class="skill-pill">Scientific Communication<span>Publications · Poster presentations</span></div>
+      <div class="skill-pill">Rehabilitation Technology<span>Device training · Adoption strategy</span></div>
+    </div>
+  </section>
+
+  <!-- ══ EDUCATION ══ -->
+
+  <section>
+    <div class="sec-label">Education</div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">M.Sc. Physiotherapy</div>
+        <div class="edu-inst">Khon Kaen University — Research Program</div>
+        <div class="edu-detail">Thesis: Slow Loaded Breathing &amp; Heart Rate Variability<br>High-Potential Student Scholarship (full tuition, 2 years)</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Sc. Physiotherapy</div>
+        <div class="edu-inst">Khon Kaen University — First Class Honours</div>
+        <div class="edu-detail">Bangkok Post Foundation Scholarship (Years 2–4)<br>Exchange: Kumamoto Health Science University, Japan<br>Outstanding Student Awards 2013, 2014</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LANGUAGES ══ -->
+
+  <section>
+    <div class="sec-label">Languages &amp; International Exposure</div>
+    <div class="skills-grid">
+      <div class="skill-pill">Thai<span>Native proficiency</span></div>
+      <div class="skill-pill">English<span>Professional working proficiency</span></div>
+      <div class="skill-pill">Japanese<span>Basic · Exchange at Kumamoto HUSC</span></div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+
+  <footer>
+    <div class="brand">@rehabarchitect.th · Clinical Innovation · From Data to Decision</div>
+    <div class="hashtags">#Neurorehabilitation · #RoboticsRehab · #RAGT · #ClinicalEducation</div>
+  </footer>
+
+</div>
+</body>
+</html>
